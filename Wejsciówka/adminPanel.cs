@@ -14,7 +14,7 @@ namespace Wejsciówka
     public partial class adminPanel : Form
     {
         private MySqlConnection conDatabase;    // połączenie
-        private MySqlCommand zapytania;         // zapytanie
+      //  private MySqlCommand zapytania;         // zapytanie
 
         public adminPanel()
         {

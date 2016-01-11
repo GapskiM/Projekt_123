@@ -36,6 +36,9 @@
             this.zatwierdz = new System.Windows.Forms.Button();
             this.labelPytanie = new System.Windows.Forms.Label();
             this.ButtonAnuluj = new System.Windows.Forms.Button();
+            this.labelNrPyt = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelKtorePyt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // radioButton1
@@ -95,6 +98,7 @@
             this.zatwierdz.TabIndex = 5;
             this.zatwierdz.Text = "Zatwierdź";
             this.zatwierdz.UseVisualStyleBackColor = true;
+            this.zatwierdz.Click += new System.EventHandler(this.zatwierdz_Click);
             // 
             // labelPytanie
             // 
@@ -117,11 +121,39 @@
             this.ButtonAnuluj.UseVisualStyleBackColor = true;
             this.ButtonAnuluj.Click += new System.EventHandler(this.ButtonAnuluj_Click);
             // 
+            // labelNrPyt
+            // 
+            this.labelNrPyt.AutoSize = true;
+            this.labelNrPyt.Location = new System.Drawing.Point(505, 13);
+            this.labelNrPyt.Name = "labelNrPyt";
+            this.labelNrPyt.Size = new System.Drawing.Size(0, 13);
+            this.labelNrPyt.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Pytanie nr:";
+            // 
+            // labelKtorePyt
+            // 
+            this.labelKtorePyt.Location = new System.Drawing.Point(65, 9);
+            this.labelKtorePyt.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.labelKtorePyt.Name = "labelKtorePyt";
+            this.labelKtorePyt.Size = new System.Drawing.Size(27, 17);
+            this.labelKtorePyt.TabIndex = 12;
+            // 
             // wejsciowkaStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 281);
+            this.Controls.Add(this.labelKtorePyt);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelNrPyt);
             this.Controls.Add(this.ButtonAnuluj);
             this.Controls.Add(this.labelPytanie);
             this.Controls.Add(this.zatwierdz);
@@ -148,5 +180,8 @@
         private System.Windows.Forms.Button zatwierdz;
         private System.Windows.Forms.Label labelPytanie;
         private System.Windows.Forms.Button ButtonAnuluj;
+        private System.Windows.Forms.Label labelNrPyt;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelKtorePyt;
     }
 }

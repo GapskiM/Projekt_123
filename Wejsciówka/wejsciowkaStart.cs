@@ -25,10 +25,7 @@ namespace Wejsciówka
         }
         private string[] zapytanieDB(int id)
         {
-          
-
-            
-                           //  trzeba bedzie zrobic petle i= ilosc pytan i wtedy losowo id + zliczanie pkt z odpowiedzi i może czas
+                         
             conDatabase = new MySqlConnection("SERVER=localhost;DataBase=bazadanych123;UserId=root; PWD=;");
             conDatabase.Open();
 
@@ -39,18 +36,19 @@ namespace Wejsciówka
 
             MySqlDataReader dr = zapytania.ExecuteReader(CommandBehavior.CloseConnection);
             dr.Read();
+                                                                                             // odczyt zmiennych z bazy danych
             string pytanie = Convert.ToString(dr["pytanie"]);
             string poprawna_odp = Convert.ToString(dr["poprawna_odp"]);
             string druga_odp = Convert.ToString(dr["druga_odp"]);
             string trzecia_odp = Convert.ToString(dr["trzecia_odp"]);
             string czwarta_odp = Convert.ToString(dr["czwarta_odp"]);
-            string[] tab = { pytanie, poprawna_odp, druga_odp, trzecia_odp, czwarta_odp };
+            string[] tab = { pytanie, poprawna_odp, druga_odp, trzecia_odp, czwarta_odp };    // przypisanie tych zmiennych do tablicy
             return tab;
             
 
         }
 
-        private int LosujPytanie()
+        private int LosujPytanie()                  // losowanie pytania
         {
             Random random = new Random();
             int id = random.Next(1, 5);
@@ -135,67 +133,47 @@ namespace Wejsciówka
             int id = int.Parse(labelNrPyt.Text);
             int ktorePyt = int.Parse(labelKtorePyt.Text);
             string[] tab = zapytanieDB(id);
-                //  randomowy uklad odpowiedzi, punktacja, ew czas,
+               
                 string odpowiedz = "";
-            // sprawdzanie ktory radiobutton zostal zaznaczony
-            if (radioButton1.Checked == true)
-            {
-                odpowiedz = radioButton1.Text;
-                MessageBox.Show(radioButton1.Text);
-
-            }
-            else if (radioButton2.Checked == true)
-            {
-                odpowiedz = radioButton2.Text;
-                MessageBox.Show(radioButton2.Text);
-                MessageBox.Show(tab[1].ToString());
-
-            }
-            else if (radioButton3.Checked == true)
-            {
-                odpowiedz = radioButton3.Text;
-                MessageBox.Show(radioButton3.Text);
-                
-            }
-            else if (radioButton4.Checked == true)
-            {
-                odpowiedz = radioButton4.Text;
-                MessageBox.Show(radioButton4.Text);
-
-            }
+           
+                    // sprawdzanie ktory radiobutton zostal zaznaczony
+            if (radioButton1.Checked == true) odpowiedz = radioButton1.Text;
+           
+            else if (radioButton2.Checked == true) odpowiedz = radioButton2.Text;
+           
+            else if (radioButton3.Checked == true) odpowiedz = radioButton3.Text;
+          
+            else if (radioButton4.Checked == true) odpowiedz = radioButton4.Text;
+          
 
            
 
             if (odpowiedz == tab[1].ToString())   // sprawdzenie poprawnosci odp
                 {
                     iloscPoprOdp++;
-                    MessageBox.Show("Poprawna odpowiedź");
-                    MessageBox.Show("ilosc odpowiedzi poprawnych: " + iloscPoprOdp);
-                    
-                     LosujPytanie();
-                     int nrid = LosujPytanie();
-                
-                ktorePyt++;
-                labelNrPyt.Text = nrid.ToString();
-                labelKtorePyt.Text = ktorePyt.ToString();
-            }   
+                    LosujPytanie();                                // losowanie kolejnego pytania
+                    int nrid = LosujPytanie();                    // zmienna z nr pytania
+                    ktorePyt++;                                  // zliczanie ilosci pytan
+
+                    labelNrPyt.Text = nrid.ToString();          
+                    labelKtorePyt.Text = ktorePyt.ToString();
+                 }   
                 else
                 {
-                    MessageBox.Show("Błędna odpowiedź");
-                LosujPytanie();
-                int nrid = LosujPytanie();
+                
+                    LosujPytanie();
+                    int nrid = LosujPytanie();
+                    ktorePyt++;
+                    labelNrPyt.Text = nrid.ToString();
+                    labelKtorePyt.Text = ktorePyt.ToString();
+                 }
 
-                ktorePyt++;
-                labelNrPyt.Text = nrid.ToString();
-                labelKtorePyt.Text = ktorePyt.ToString();
-            }
-
-            if (ktorePyt == 6)
+            if (ktorePyt == 6)                  //sprawdzenie ilosci pytan
             {
-                MessageBox.Show("Twoj wynik to: " + iloscPoprOdp + "/" + "5. " + "Gratulacje!");
-                Application.Restart();
-                // Do zrobienia:
-                // Przeslij dane do nastepnego formularza!! zakonczenie + random pytan nowy
+             
+                wynik frm = new wynik(iloscPoprOdp.ToString());
+                frm.Show();
+                this.Close();
             }
 
         }

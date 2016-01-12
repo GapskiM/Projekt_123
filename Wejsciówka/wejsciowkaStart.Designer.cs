@@ -128,6 +128,7 @@
             this.labelNrPyt.Name = "labelNrPyt";
             this.labelNrPyt.Size = new System.Drawing.Size(0, 13);
             this.labelNrPyt.TabIndex = 10;
+            this.labelNrPyt.Visible = false;
             // 
             // label2
             // 

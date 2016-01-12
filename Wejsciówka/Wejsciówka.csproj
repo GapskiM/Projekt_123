@@ -84,6 +84,12 @@
     <Compile Include="wejsciowkaStart.Designer.cs">
       <DependentUpon>wejsciowkaStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="wynik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wynik.Designer.cs">
+      <DependentUpon>wynik.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="adminPanel.resx">
       <DependentUpon>adminPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +107,9 @@
     </Compile>
     <EmbeddedResource Include="wejsciowkaStart.resx">
       <DependentUpon>wejsciowkaStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wynik.resx">
+      <DependentUpon>wynik.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

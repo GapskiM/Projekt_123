@@ -34,7 +34,7 @@ namespace Wejsciówka
                 return Name;
             }
         }
-        private void adminUsuwanie_Load(object sender, EventArgs e)
+        private string licznik()
         {
             string licznik_g;
             conDatabase = new MySqlConnection("SERVER=localhost;DataBase=bazadanych123;UserId=root; PWD=;");            // LICZENIE ILOSCI PYTAN Z BAZY
@@ -42,27 +42,41 @@ namespace Wejsciówka
             MySqlCommand command = new MySqlCommand("SELECT COUNT(*) FROM pytania", conDatabase);
             licznik_g = Convert.ToString(command.ExecuteScalar());
             conDatabase.Close();
+            return licznik_g;
 
+        }
+        private void comboBoxWypelnienie()
+        {
+            string licznik_g = licznik();
 
-
-            for (int i = 1; i <= int.Parse(licznik_g); i++)
-            {
+          
                 conDatabase = new MySqlConnection("SERVER=localhost;DataBase=bazadanych123;UserId=root; PWD=;");
                 conDatabase.Open();
 
                 zapytania = conDatabase.CreateCommand();
-                zapytania.CommandText = ("SELECT pytanie FROM pytania WHERE ID='" + i + "';");
+                zapytania.CommandText = ("SELECT pytanie,ID FROM pytania;");
                 zapytania.ExecuteNonQuery();
 
 
-                MySqlDataReader dr = zapytania.ExecuteReader(CommandBehavior.CloseConnection);
+                MySqlDataReader dr = zapytania.ExecuteReader();
                 dr.Read();
-
-                string pytanie = Convert.ToString(dr["pytanie"]);
-                comboBox1.Items.Add(new Item(pytanie, i.ToString()));
-
+                while (dr.Read())
+                {
+                    string pytanie = Convert.ToString(dr["pytanie"]);
+                    string id = Convert.ToString(dr["ID"]);
+                    comboBox1.Items.Add(new Item(pytanie, id));
+                }
                 
-            }
+
+                dr.Dispose();
+
+        
+        }
+        private void adminUsuwanie_Load(object sender, EventArgs e)
+        {
+            comboBoxWypelnienie();
+           
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -75,11 +89,17 @@ namespace Wejsciówka
                 command.ExecuteNonQuery();
                 conDatabase.Close();
                 MessageBox.Show("Pytanie zostało usunięte!");
-                // adminPanel admin = new adminPanel();
-                //  admin.Show();
-                //this.Close();
-            }
+            adminUsuwanie aU = new adminUsuwanie();
+            aU.Show();
+            this.Close();
+           
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+    }
 
        
 }

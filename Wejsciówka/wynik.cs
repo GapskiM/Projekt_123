@@ -43,3 +43,6 @@ namespace Wejsciówka
         }
     }
 }
+                        // admin panel - lista z pytaniami dodawanie + usuwanie i lista z pyt
+                        // admin panel z użytkownikami dodawanie i lista
+                        // rejstracja uzytkownikow 

@@ -64,11 +64,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminDodawanie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminDodawanie.Designer.cs">
+      <DependentUpon>adminDodawanie.cs</DependentUpon>
+    </Compile>
     <Compile Include="adminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="adminPanel.Designer.cs">
       <DependentUpon>adminPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adminUsuwanie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminUsuwanie.Designer.cs">
+      <DependentUpon>adminUsuwanie.cs</DependentUpon>
     </Compile>
     <Compile Include="logWindow.cs">
       <SubType>Form</SubType>
@@ -90,8 +102,14 @@
     <Compile Include="wynik.Designer.cs">
       <DependentUpon>wynik.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="adminDodawanie.resx">
+      <DependentUpon>adminDodawanie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="adminPanel.resx">
       <DependentUpon>adminPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminUsuwanie.resx">
+      <DependentUpon>adminUsuwanie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="logWindow.resx">
       <DependentUpon>logWindow.cs</DependentUpon>

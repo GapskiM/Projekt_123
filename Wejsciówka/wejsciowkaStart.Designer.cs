@@ -164,7 +164,7 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Name = "wejsciowkaStart";
-            this.Text = "wejsciowkaStart";
+            this.Text = "Wejściówka - Pytania";
             this.Load += new System.EventHandler(this.wejsciowkaStart_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

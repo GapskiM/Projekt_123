@@ -46,11 +46,8 @@ namespace Wejsciówka
                 + "VALUES ('" + boxPytanie.Text + "', '" + boxPoprOdp.Text + "', '"
                 + boxDrugaOdp.Text + "', '" + boxTrzeciaOdp.Text + "', '" + boxCzwartaOdp.Text + "');";
 
-                conDatabase = new MySqlConnection("SERVER=localhost;DataBase=bazadanych123;UserId=root; PWD=;");
-                conDatabase.Open();
-                MySqlCommand command = new MySqlCommand(zapytanie_d, conDatabase);
-                command.ExecuteNonQuery();
-                conDatabase.Close();
+                admin admin = new admin();
+                admin.Dodaj(zapytanie_d);
 
                 MessageBox.Show("Twoje pytanie zostało poprawnie dodane do bazy danych");
                  ClearTextBoxes();   // Czyści pola formularza po poprawnym dodaniu pytania!

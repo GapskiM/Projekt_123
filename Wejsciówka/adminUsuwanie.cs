@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+// klasa 
+
 namespace Wejsciówka
 {
     public partial class adminUsuwanie : Form
@@ -81,14 +83,13 @@ namespace Wejsciówka
         private void button1_Click(object sender, EventArgs e)
         {
             Item itm = (Item)comboBox1.SelectedItem;
-            string zapytanie_d = "delete from pytania where ID='" + itm.Value + "';";
+            string idUsun = itm.Value;
 
-                conDatabase = new MySqlConnection("SERVER=localhost;DataBase=bazadanych123;UserId=root; PWD=;");
-                conDatabase.Open();
-                MySqlCommand command = new MySqlCommand(zapytanie_d, conDatabase);
-                command.ExecuteNonQuery();
-                conDatabase.Close();
-                MessageBox.Show("Pytanie zostało usunięte!");
+            admin admin = new admin();
+            admin.Usun(idUsun);
+
+
+            MessageBox.Show("Pytanie zostało usunięte!");
             adminUsuwanie aU = new adminUsuwanie();
             aU.Show();
             this.Close();
